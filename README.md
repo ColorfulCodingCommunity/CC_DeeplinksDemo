@@ -5,9 +5,16 @@ https://www.youtube.com/watch?v=bKiwNfNqKAc
 
 # Instructions 
 
+## Unity
+
+- `/Scripts/Editor/AppleBuildPostprocessor` - automatically adds xcode capabilities. TO CHANGE associated domain name.
+- `/Plugins/Android/AndroidManifest.xml` - TO CHANGE <i>android:scheme</i> and <i>android:host</i> based on the url you want to use.
+- `/Scripts/DeepLinkHandler.cs` - basic handling of deeplink URLs. You basically have to treat them as strings.
+
+
+
 ## Apple setup
 Put `apple-app-site-association` on the same hosting as your website. Make sure the URL schema is the one you use for your web domain.
-
 
 ## Web setup
 
@@ -24,7 +31,7 @@ tryOpen = ()=> {
     if (userAgent.match(/iPhone|iPad|iPod/i)) {
         window.location = "https://artlink.app/app.html" + deepLinkQuery;
     } else {
-        window.location = "artlink://artlink.app" + deepLinkQuery;
+        window.location = "colorfulcoding://colorfulcoding.com" + deepLinkQuery;
         setTimeout(function () {
             window.location = "https://play.google.com/store/apps/details?id=com.colorfulcoding.artlink";
         }, 3000);
